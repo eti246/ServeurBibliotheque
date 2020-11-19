@@ -1,0 +1,454 @@
+{
+	"info": {
+		"_postman_id": "07a57baf-2b97-427c-9972-63d794ee212e",
+		"name": "TP1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Etienne Leonard",
+			"item": [
+				{
+					"name": "Sélection d'une succursale",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5600/succursales/5f89bf00a9b8990834ac4639",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5600",
+							"path": [
+								"succursales",
+								"5f89bf00a9b8990834ac4639"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ajouter un livre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categorie\": \"Philosophie\",\r\n    \"titre\": \"Une aventure\",\r\n    \"prix\": 19.99,\r\n    \"auteur\": \"Etienne L\",\r\n    \"sujet\": \"Une belle et petite aventure\",\r\n    \"ISBN\": \"978-1-2345-6789-7\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5600/livres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5600",
+							"path": [
+								"livres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "METADATA Livres",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5600/livres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5600",
+							"path": [
+								"livres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "METADATA Livres avec categorie=Aventure",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5600/livres?categorie=Aventure",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5600",
+							"path": [
+								"livres"
+							],
+							"query": [
+								{
+									"key": "categorie",
+									"value": "Aventure"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "METADATA Livres avec categorie=Enfant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5600/livres?categorie=Enfant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5600",
+							"path": [
+								"livres"
+							],
+							"query": [
+								{
+									"key": "categorie",
+									"value": "Enfant"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "METADATA Livres avec une catégorie inéxistante",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5600/livres?categorie=Inexistante",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5600",
+							"path": [
+								"livres"
+							],
+							"query": [
+								{
+									"key": "categorie",
+									"value": "Inexistante"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EMBED Sélection d'une succursale",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5600/succursales/5f89bf00a9b8990834ac4639?embed=inventaire",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5600",
+							"path": [
+								"succursales",
+								"5f89bf00a9b8990834ac4639"
+							],
+							"query": [
+								{
+									"key": "embed",
+									"value": "inventaire"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Etienne Desrochers",
+			"item": [
+				{
+					"name": "Ajouter un commentaire à propos d’un livre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dateCommentaire\":\"2020-10-12T00:00:00.000+00:00\",\r\n    \"message\":\"test\",\r\n    \"etoile\":5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5600/livres/:idLivre/commentaires?_body=false",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5600",
+							"path": [
+								"livres",
+								":idLivre",
+								"commentaires"
+							],
+							"query": [
+								{
+									"key": "_body",
+									"value": "false",
+									"description": "Metter true si vous désirer voir le contenut du livre modifer et false pour le contraire"
+								}
+							],
+							"variable": [
+								{
+									"key": "idLivre",
+									"value": "5f7a2f9391ff085d74e0ff26",
+									"description": "Contient l'id du livre désirer"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mise à jour partielle d'un livre",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categorie\":\"Superhero\",\r\n    \"titre\":\"Spider-Man/Deapool Tome 1\",\r\n    \"prix\":29.99,\r\n    \"auteur\":\"Kelly\",\r\n    \"sujet\":\"Team up de Spider-Man et de Deapool\",\r\n    \"ISBN\":\"111-0-0364-1111-1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5600/livres/:idLivre?_body=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5600",
+							"path": [
+								"livres",
+								":idLivre"
+							],
+							"query": [
+								{
+									"key": "_body",
+									"value": "true",
+									"description": "Metter true si vous désirer voir le contenut du livre modifer et false pour le contraire"
+								}
+							],
+							"variable": [
+								{
+									"key": "idLivre",
+									"value": "5f7a2f9391ff085d74e0ff26"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Selection d'un livre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5600/livres/:idLivre?embed=inventaire&fields=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5600",
+							"path": [
+								"livres",
+								":idLivre"
+							],
+							"query": [
+								{
+									"key": "embed",
+									"value": "inventaire",
+									"description": "rentrer inventaire pour a quelle inventaire le livre fais partit"
+								},
+								{
+									"key": "fields",
+									"value": "",
+									"description": "Rentrer les hamps que vous desirer voir"
+								}
+							],
+							"variable": [
+								{
+									"key": "idLivre",
+									"value": "5f7a2f9391ff085d74e0ff26",
+									"description": "Contient l'id du livre désirer"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Selection de toutes les categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5600/categories/",
+							"host": [
+								"localhost"
+							],
+							"port": "5600",
+							"path": [
+								"categories",
+								""
+							]
+						},
+						"description": "Retourne tout les categories de livres"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Gabriel  Duquette-Godon",
+			"item": [
+				{
+					"name": "Post Succursale",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appelatif\": \"XDF\",\r\n    \"adresse\": \"Bonjour 1320\",\r\n    \"ville\": \"Limbe\",\r\n    \"codePostal\": \"VBF 150\",\r\n    \"province\": \"Quizième niveu\",\r\n    \"telephone\": \"666 555 5555\",\r\n    \"telecopieur\": \"666 555 55555\",\r\n    \"information\": \"L'enfer\",\r\n    \"inventaire\" : \"5f89bbb1e189ac10dcdfcb3a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5600/succursales/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5600",
+							"path": [
+								"succursales",
+								""
+							]
+						},
+						"description": "Insère les succursales\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get livre inventaire",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5600/livres/5f7a2f9391ff085d74e0ff26/inventaire",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5600",
+							"path": [
+								"livres",
+								"5f7a2f9391ff085d74e0ff26",
+								"inventaire"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put succursale",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"appelatif\": \"DWDWDW\",\r\n    \"adresse\": \"Bonjour 1320\",\r\n    \"ville\": \"Limbe\",\r\n    \"codePostal\": \"VBF 150\",\r\n    \"province\": \"Quizième niveu\",\r\n    \"telephone\": \"444 4444 4444\",\r\n    \"telecopieur\": \"444 444 55555\",\r\n    \"information\": \"L'enfer\",\r\n    \"inventaire\" : \"5f89bbb1e189ac10dcdfcb3a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5600/succursales/5f89ca1ccc7a972f20c006ac",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5600",
+							"path": [
+								"succursales",
+								"5f89ca1ccc7a972f20c006ac"
+							]
+						},
+						"description": "efef"
+					},
+					"response": []
+				},
+				{
+					"name": "Del Livre",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5600/livres/5f7a301991ff085d74e0ff32",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5600",
+							"path": [
+								"livres",
+								"5f7a301991ff085d74e0ff32"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
